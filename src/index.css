@@ -1,6 +1,28 @@
 @import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+@theme {
+	--animate-slide-in: slide-in 0.3s ease-out;
+	--animate-slide-out: slide-out 0.8s ease-out;
+
+	@keyframes slide-in {
+		0% {
+			transform: translateY(-100%);
+		}
+		100% {
+			transform: translateX(0);
+		}
+	}
+
+	@keyframes slide-out {
+		0% {
+			transform: translateX(0);
+		}
+		100% {
+			transform: translateY(-100%);
+		}
+	}
+}
 
 * {
-	font-family: "Poppins", sans-serif;
+	font-family: Poppins, sans-serif;
 }

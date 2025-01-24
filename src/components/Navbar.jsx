@@ -1,35 +1,66 @@
+/* eslint-disable react/no-unknown-property */
 import { useState } from "react";
 import SearchBar from "./SearchBar";
+import Menu from "./Menu";
 
 const Navbar = () => {
 	const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
-
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const handleMenuToggle = () => {
 		setIsSearchBarOpen((prev) => !prev); // Toggle the state to show/hide the search bar
 	};
+	const handleNavToggle = () => {
+		setIsMenuOpen((prev) => !prev);
+	};
 
 	return (
-		<header className="bg-[#0d1e53] text-white max-w-auto mx-auto py-5 px-[20px] sm:px-[60px] md:px-[75px] lg:px-[350px]">
+		<header className="bg-[#0d1e53] text-white max-w-auto mx-auto py-5 px-[20px] sm:px-[40px] md:px-[40px] lg:px-[150px]">
 			<nav className="flex justify-between items-center">
 				{/* Hamburger menu icon (hidden on larger screens) */}
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					className="ionicon cursor-pointer lg:hidden transform transition-transform duration-300 hover:scale-125"
-					viewBox="0 0 512 512"
-					style={{ width: "25px", height: "25px" }}
-				>
-					<path
-						fill="none"
-						stroke="currentColor"
-						strokeLinecap="round"
-						strokeMiterlimit="10"
-						strokeWidth="32"
-						d="M80 160h352M80 256h352M80 352h352"
-					/>
-				</svg>
+				{isMenuOpen && <Menu />}
+				{isMenuOpen ? (
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						className="ionicon cursor-pointer lg:hidden transform transition-transform duration-300 hover:scale-125"
+						viewBox="0 0 512 512"
+						style={{ width: "25px", height: "25px" }}
+						onClick={handleNavToggle}
+					>
+						<path
+							fill="none"
+							stroke="currentColor"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="32"
+							d="M368 368L144 144M368 144L144 368"
+						/>
+					</svg>
+				) : (
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						className="ionicon cursor-pointer lg:hidden transform transition-transform duration-300 hover:scale-125"
+						viewBox="0 0 512 512"
+						style={{ width: "25px", height: "25px" }}
+						onClick={handleNavToggle}
+					>
+						<path
+							fill="none"
+							stroke="currentColor"
+							strokeLinecap="round"
+							strokeMiterlimit="10"
+							strokeWidth="32"
+							d="M80 160h352M80 256h352M80 352h352"
+						/>
+					</svg>
+				)}
+
 				{/* Conditional rendering of Search Bar */}
 				{isSearchBarOpen && (
-					<SearchBar toggleSearchBar={handleMenuToggle} />
+					<SearchBar
+						toggleSearchBar={handleMenuToggle}
+						setIsSearchBarOpen={setIsSearchBarOpen}
+						isSearchBarOpen={isSearchBarOpen}
+					/>
 				)}
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -126,41 +157,6 @@ const Navbar = () => {
 					</svg>
 				</div>
 				{/* Navigation links (hidden on smaller screens) */}
-				<ul className="flex hidden">
-					<li>
-						<a href="/">Home</a>
-					</li>
-					<li>
-						<a href="/">Catalog</a>
-					</li>
-					<li>
-						<a href="/">Bundles</a>
-					</li>
-					<li>
-						<a href="/">Protein Powder</a>
-					</li>
-					<li>
-						<a href="/">BCAAS</a>
-					</li>
-					<li>
-						<a href="/">Creatine</a>
-					</li>
-					<li>
-						<a href="/">Plant Based</a>
-					</li>
-					<li>
-						<a href="/">Activewear</a>
-					</li>
-					<li>
-						<a href="/">Accessories</a>
-					</li>
-					<li>
-						<a href="/">About Us</a>
-					</li>
-					<li>
-						<a href="/">Reviews</a>
-					</li>
-				</ul>
 			</nav>
 		</header>
 	);
