@@ -88,8 +88,7 @@ const SearchBar = ({ toggleSearchBar, setIsSearchBarOpen }) => {
 					setIsClosed(true); // Trigger the slide-out animation
 					setTimeout(() => {
 						toggleSearchBar();
-						setIsSearchBarOpen(false); // Close the search bar after the animation
-					}, 500); // Ensure the slide-out animation completes before closing
+					}, 500);
 				}}
 			>
 				<path

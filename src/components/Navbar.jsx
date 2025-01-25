@@ -17,11 +17,16 @@ const Navbar = () => {
 		<header className="bg-[#0d1e53] text-white max-w-auto mx-auto py-5 px-[20px] sm:px-[40px] md:px-[40px] lg:px-[150px]">
 			<nav className="flex justify-between items-center">
 				{/* Hamburger menu icon (hidden on larger screens) */}
-				{isMenuOpen && <Menu />}
+				{isMenuOpen && (
+					<Menu
+						setIsMenuOpen={setIsMenuOpen}
+						isMenuOpen={isMenuOpen}
+					/>
+				)}
 				{isMenuOpen ? (
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
-						className="ionicon cursor-pointer lg:hidden transform transition-transform duration-300 hover:scale-125"
+						className="ionicon cursor-pointer lg:hidden transform transition-transform duration-300 hover:scale-125 invisible"
 						viewBox="0 0 512 512"
 						style={{ width: "25px", height: "25px" }}
 						onClick={handleNavToggle}
