@@ -54,7 +54,7 @@ const Menu = ({ setIsMenuOpen, isMenuOpen }) => {
 			{/* Close icon (X) */}
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
-				className="ionicon cursor-pointer lg:hidden transform transition-transform duration-300 hover:scale-125 absolute top-6 left-10 animate-slide-in-left-to-right"
+				className="ionicon cursor-pointer lg:hidden transform transition-transform duration-300 hover:scale-125 absolute top-6 left-5 md:left-10 animate-slide-in-left-to-right"
 				viewBox="0 0 512 512"
 				style={{ width: "25px", height: "25px" }}
 				onClick={handleCloseMenu}

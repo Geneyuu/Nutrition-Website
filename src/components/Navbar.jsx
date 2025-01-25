@@ -14,8 +14,8 @@ const Navbar = () => {
 	};
 
 	return (
-		<header className="bg-[#0d1e53] text-white max-w-auto mx-auto py-5 px-[20px] sm:px-[40px] md:px-[40px] lg:px-[150px]">
-			<nav className="flex justify-between items-center">
+		<header className="bg-[#0d1e53] text-white max-w-auto mx-auto py-5 px-[20px] sm:px-[40px] md:px-[40px]  ">
+			<nav className="flex justify-between items-center 2xl:w-[80%] mx-auto">
 				{/* Hamburger menu icon (hidden on larger screens) */}
 				{isMenuOpen && (
 					<Menu
