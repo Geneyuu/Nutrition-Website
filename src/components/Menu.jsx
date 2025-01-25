@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import CloseIcon from "../assets/images/close-outline.svg";
 
 const menuItems = [
 	"Home",
@@ -22,7 +23,6 @@ const Menu = ({ setIsMenuOpen, isMenuOpen }) => {
 		const handleOutsideClick = (e) => {
 			if (e.target.classList.contains("overlay")) {
 				setIsClosed(true); // Trigger closing animation
-
 				// Set isMenuOpen to false after the animation finishes
 				setTimeout(() => {
 					setIsMenuOpen(false);
@@ -35,6 +35,7 @@ const Menu = ({ setIsMenuOpen, isMenuOpen }) => {
 
 		// Cleanup the event listener on component unmount
 		return () => {
+			setIsClosed(false);
 			document.removeEventListener("click", handleOutsideClick);
 		};
 	}, [setIsMenuOpen]); // Add setIsMenuOpen to the dependency array
@@ -49,29 +50,20 @@ const Menu = ({ setIsMenuOpen, isMenuOpen }) => {
 	return (
 		<>
 			{/* Overlay */}
-			<div className="overlay bg-black h-[100vh] absolute inset-0 -z-10 opacity-20 lg:hidden"></div>
+			<div className="overlay bg-black h-[100vh] absolute inset-0 z-10 opacity-20 lg:hidden"></div>
 
 			{/* Close icon (X) */}
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				className="ionicon cursor-pointer lg:hidden transform transition-transform duration-300 hover:scale-125 absolute top-6 left-5 md:left-10 animate-slide-in-left-to-right"
-				viewBox="0 0 512 512"
-				style={{ width: "25px", height: "25px" }}
+
+			<img
+				src={CloseIcon}
+				alt="Close-icon"
+				className="ionicon cursor-pointer lg:hidden transform transition-transform duration-300 hover:scale-125 absolute top-6 left-5 md:left-10 animate-slide-in-left-to-right w-[25px] h-[25px] z-50"
 				onClick={handleCloseMenu}
-			>
-				<path
-					fill="none"
-					stroke="currentColor"
-					strokeLinecap="round"
-					strokeLinejoin="round"
-					strokeWidth="32"
-					d="M368 368L144 144M368 144L144 368"
-				/>
-			</svg>
+			/>
 
 			{/* Menu Items */}
 			<ul
-				className={`absolute left-0 text-[19px] gap-2 top-0 -z-10 flex flex-col text-white bg-[#0d1e53] w-[70%] sm:w-[65%] justify-center h-[100vh] lg:hidden ${
+				className={`absolute left-0 text-[19px] gap-2 top-0 z-40 flex flex-col text-white bg-[#0d1e53] w-[70%] sm:w-[65%] justify-center h-[100vh] lg:hidden ${
 					isClosed
 						? "animate-slide-in-right-to-left" // Closing animation
 						: "animate-slide-in-left-to-right" // Opening animation
